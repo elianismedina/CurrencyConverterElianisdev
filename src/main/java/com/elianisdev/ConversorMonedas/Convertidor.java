@@ -8,7 +8,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class Convertidor {
-    String url_api = "https://v6.exchangerate-api.com/v6/d710fbe52f341e65337bbaba/pair/";
+    public static final String API_KEY = System.getenv("EXCHANGE_RATE_API_KEY");
+
+    String url_api = "https://v6.exchangerate-api.com/v6/"+API_KEY+"/pair/";
+
     private int cantidad;
     private String primerPais;
     private String segundoPais;
@@ -36,7 +39,7 @@ public class Convertidor {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(this.url_api + getPrimerPais() +
-                        "/"+ getSegundoPais() + "/" + String.valueOf(getCantidad())))
+                                "/" + getSegundoPais() + "/" + getCantidad()))
                 .build();
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());
