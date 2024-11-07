@@ -8,6 +8,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class Convertidor {
+
+    /**
+     * Utilizamos la variable de entorno establecida para poder consultar la API
+     */
     public static final String API_KEY = System.getenv("EXCHANGE_RATE_API_KEY");
 
     String url_api = "https://v6.exchangerate-api.com/v6/"+API_KEY+"/pair/";
@@ -29,11 +33,9 @@ public class Convertidor {
     }
 
     /**
-     *Esta función se encarga de crear la petición a la API con los datos seleccionados en el menú de opciones en el Main.
-     * @return Es un String que contiene la información devuelta en formato JSON por la API.
-     * Esto incluye la cantidad a convertir junto con el país de origen y la cantidad equivalente
-     * en la moneda del país de destino.
-     *
+     * Este metodo se encarga de realizar la conversión
+     * consultando la API de acuerdo con la operación escogida
+     * por el usuario y el monto establecido.
      */
     public String conversion() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
@@ -49,7 +51,10 @@ public class Convertidor {
                 getSegundoPais() + " es: " + results.getCantidad() + " " +results.getPaisSalida();
     }
 
-
+    /**
+     * Getters and setters
+     *
+     */
     public int getCantidad() {
         return cantidad;
     }

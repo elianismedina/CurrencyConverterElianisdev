@@ -7,6 +7,11 @@ public class Resultado {
     @SerializedName("target_code")
     private String paisSalida;
 
+    /**
+     * constructor
+     */
+
+
     public Resultado(double cantidad, String paisSalida) {
         this.cantidad = cantidad;
         this.paisSalida = paisSalida;

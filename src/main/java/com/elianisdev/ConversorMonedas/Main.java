@@ -11,20 +11,28 @@ public class Main {
 		Convertidor converter = new Convertidor("",0,"","");
 		boolean salir=true;
 
-		String menu = "++++++++++Conversor de Monedas++++++++++\n" +
-                      "1) D\u00F3lar =>> Peso argentino\n\n" +
-                      "2) Peso argentino =>> D\u00F3lar\n\n" +
-                      "3) D\u00F3lar =>> Peso Chileno\n\n" +
-                      "4) Peso Chileno=>> D\u00F3lar\n\n" +
-                      "5) D\u00F3lar =>> Real Brasile\u00F1o\n\n" +
-                      "6) Real Brasile\u00F1o =>> D\u00F3lar\n\n" +
-                      "7) Salir\n\n";
-		String menuConverted = "Ingrese la cantidad que deseas convertir:  ";
-
-
-
+		String menu = """
+                +++++++++++CURRENCY CONVERTER++++++++++
+                Seleccione la operación que desea realizar:
+                1) Dólar =>> Peso argentino
+                
+                2) Peso argentino =>> Dólar
+                
+                3) Dólar =>> Peso Chileno
+                
+                4) Peso Chileno=>> Dólar
+                
+                5) Dólar =>> Real Brasileño
+                
+                6) Real Brasileño =>> Dólar
+                
+                7) Salir
+                
+                """;
+		String menuConverted = "Ingrese la cantidad que deseas convertir: ";
 
 		while(salir){
+
 			System.out.println(menu);
 			try{
 				int option = lectura.nextInt();
@@ -35,11 +43,11 @@ public class Main {
 				}
 				Scanner cantConvertir = new Scanner(System.in);
 				System.out.println(menuConverted);
-				int qt = cantConvertir.nextInt();
+				int amount = cantConvertir.nextInt();
 				switch (option) {
 					case 1: {
 						// Dólar estadounidense -> Peso Argentino
-						converter.setCantidad(qt);
+						converter.setCantidad(amount);
 						converter.setPrimerPais("USD");
 						converter.setSegundoPais("ARS");
 						System.out.println(converter.conversion()+"\n");
@@ -47,7 +55,7 @@ public class Main {
 					}
 					case 2: {
 						// Peso Argentino -> Dólar estadounidense
-						converter.setCantidad(qt);
+						converter.setCantidad(amount);
 						converter.setPrimerPais("ARS");
 						converter.setSegundoPais("USD");
 						System.out.println(converter.conversion()+"\n");
@@ -55,7 +63,7 @@ public class Main {
 					}
 					case 3: {
 						// Dólar estadounidense -> Peso Chileno
-						converter.setCantidad(qt);
+						converter.setCantidad(amount);
 						converter.setPrimerPais("USD");
 						converter.setSegundoPais("CLP");
 						System.out.println(converter.conversion()+"\n");
@@ -63,7 +71,7 @@ public class Main {
 					}
 					case 4: {
 						// Peso Chileno -> Dólar estadounidense
-						converter.setCantidad(qt);
+						converter.setCantidad(amount);
 						converter.setPrimerPais("CLP");
 						converter.setSegundoPais("USD");
 						System.out.println(converter.conversion()+"\n");
@@ -71,7 +79,7 @@ public class Main {
 					}
 					case 5: {
 						// Dólar estadounidense -> Real brasileño
-						converter.setCantidad(qt);
+						converter.setCantidad(amount);
 						converter.setPrimerPais("USD");
 						converter.setSegundoPais("BRL");
 						System.out.println(converter.conversion()+"\n");
@@ -79,7 +87,7 @@ public class Main {
 					}
 					case 6: {
 						// Real brasileño -> Dólar estadounidense
-						converter.setCantidad(qt);
+						converter.setCantidad(amount);
 						converter.setPrimerPais("BRL");
 						converter.setSegundoPais("USD");
 						System.out.println(converter.conversion()+"\n");
@@ -90,7 +98,7 @@ public class Main {
 					}
 				}
 			}catch (InputMismatchException ex){
-				System.out.println("Debe ingresar un número entero.");
+				System.out.println("Por favor ingrese un número entero.");
 				lectura.next();
 			}
         }
